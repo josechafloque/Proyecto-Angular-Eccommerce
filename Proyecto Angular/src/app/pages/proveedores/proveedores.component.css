@@ -1,0 +1,6 @@
+#tabla-proveedores thead i{
+    display:none;
+}
+.mostrar-chevron i{
+    display:inline!important;
+}

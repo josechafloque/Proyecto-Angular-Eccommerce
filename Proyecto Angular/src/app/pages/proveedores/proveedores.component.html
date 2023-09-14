@@ -1,0 +1,50 @@
+<section class="padded">
+    <div class="container">
+        <h2>Proveedores</h2>
+        <div class="mb-3">
+            <label class="form-label">Buscar por <strong>{{etiquetaColumna}}</strong></label>
+            <input type="text" class="form-control" placeholder="Escriba expresión a buscar"
+                (input)="buscar($event)">
+        </div>
+        <pagination-controls (pageChange)="numeroPagina = $event" previousLabel="Anterior"
+        nextLabel="Siguiente"></pagination-controls>
+
+        <div class="lds-roller" [class.precarga-ocultar]="precarga == false">
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+        <table class="table" id="tabla-proveedores">
+            <thead>
+                <tr>
+                    <th (click) = "seleccionarColumna('Codigo','idproveedor')" 
+                        [class.mostrar-chevron]="nombreColumna==='idproveedor'">Código 
+                        <i class="bi bi-chevron-{{sentidoOrden == 1 ? 'up':'down'}}"></i></th>
+                    <th (click) = "seleccionarColumna('Empresa','nombreempresa')"
+                        [class.mostrar-chevron]="nombreColumna==='nombreempresa'">Empresa 
+                        <i class="bi bi-chevron-{{sentidoOrden == 1 ? 'up':'down'}}"></i></th>
+                    <th (click) = "seleccionarColumna('Contacto','nombrecontacto')" 
+                        [class.mostrar-chevron]="nombreColumna==='nombrecontacto'">Contacto 
+                        <i class="bi bi-chevron-{{sentidoOrden == 1 ? 'up':'down'}}"></i></th>
+                    <th (click) = "seleccionarColumna('Cargo','cargocontacto')"
+                        [class.mostrar-chevron]="nombreColumna==='cargocontacto'">Cargo 
+                        <i class="bi bi-chevron-{{sentidoOrden == 1 ? 'up':'down'}}"></i></th>
+                    <th (click) = "seleccionarColumna('Pais','pais')"
+                        [class.mostrar-chevron]="nombreColumna==='pais'">País 
+                        <i class="bi bi-chevron-{{sentidoOrden == 1 ? 'up':'down'}}"></i></th>
+                    <th (click) = "seleccionarColumna('Ciudad','ciudad')"
+                        [class.mostrar-chevron]="nombreColumna==='ciudad'">Ciudad 
+                        <i class="bi bi-chevron-{{sentidoOrden == 1 ? 'up':'down'}}"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listaProveedoresFiltrados | paginate: { itemsPerPage: 10, currentPage: numeroPagina }">
+                    <td>{{item.idproveedor}}</td>
+                    <td>{{item.nombreempresa}}</td>
+                    <td>{{item.nombrecontacto}}</td>
+                    <td>{{item.cargocontacto}}</td>
+                    <td>{{item.pais}}</td>
+                    <td>{{item.ciudad}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

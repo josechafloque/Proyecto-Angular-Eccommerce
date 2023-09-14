@@ -1,0 +1,44 @@
+<section id="inversiones" class="padded">
+    <div class="container" *ngIf="listaProductos[0]">
+        <h2>{{listaProductos[0].nombre}}</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ listaProductos[0].imagengrande == null 
+                    ? 'assets/images/no-image.svg' 
+                    : rutaServicio + listaProductos[0].imagengrande }}" 
+                    class="img-fluid" alt="...">
+            </div>
+            <div class="col-md-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Detalle</th><td>{{listaProductos[0].detalle}}</td>
+                        </tr>
+                        <tr>
+                            <th>Categoría</th><td>{{listaProductos[0].categoria}}</td>
+                        </tr>
+                        <tr>
+                            <th>Precio</th><td>S/ {{(listaProductos[0].preciorebajado == 0 ? listaProductos[0].precio : listaProductos[0].preciorebajado) | number: '.2'}}
+                                <span class="precio-rebajado" [class.precio-rebajado-ocultar]="listaProductos[0].preciorebajado == 0">S/
+                                    {{listaProductos[0].precio | number: '.2'}}</span></td>
+                        </tr>
+                        <tr>
+                            <th>Proveedor</th><td>{{listaProductos[0].proveedor}}</td>
+                        </tr>
+                        <tr>
+                            <th>País</th><td>{{listaProductos[0].pais}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <input type="number" min="1" value="1" (input)="actualizarCantidad($event)">
+                <button class="btn btn-primary" (click)="agregarCarrito(listaProductos[0])">Agregar al carrito</button>
+
+                <h3>Descripción</h3>
+                <div [innerHTML]="listaProductos[0].descripcion"></div>
+            </div>
+        </div>
+
+        
+    </div>
+</section>

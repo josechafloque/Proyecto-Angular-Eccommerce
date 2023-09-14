@@ -1,0 +1,60 @@
+<div class="row row-cols-xxl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 g-4">
+
+    <div class="col" *ngFor="let item of listaProductos">
+        <div class="card h-100">
+
+            <a [routerLink]="['/productodetalle/' + item.idproducto]">
+                <img src="{{ item.imagenchica == '' 
+                        ? 'assets/images/no-image.svg' 
+                        : rutaServicio + item.imagenchica }}" class="card-img-top" alt="...">
+            </a>
+
+            <i class="bi bi-eye" data-bs-toggle="modal" data-bs-target="#vistaRapidaModal"
+                (click)="mostrarDatosVistaRapida(item.idproducto!)"></i>
+
+            <div [class.precio-rebajado-ocultar]="item.preciorebajado == 0">
+                {{((item.precio! - item.preciorebajado!)/item.precio! * 100).toFixed(2) }}%</div>
+
+            <div class="card-body">
+                <h5 class="card-title">{{item.nombre}}</h5>
+                <p class="card-text">
+                    S/ {{(item.preciorebajado == 0 ? item.precio : item.preciorebajado) | number: '.2'}}
+                    <span class="precio-rebajado" [class.precio-rebajado-ocultar]="item.preciorebajado == 0">S/
+                        {{item.precio | number: '.2'}}</span>
+                    <i class="bi bi-cart4 botonAgregarCarrito" (click)="agregarCarrito(item)" title="Añadir al carrito"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- Modal Vista Rápida -->
+<div class="modal fade" id="vistaRapidaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" *ngIf="listaProductoDetalles[0]">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{listaProductoDetalles[0].nombre}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="{{ listaProductoDetalles[0].imagengrande == '' 
+                            ? 'assets/images/no-image.svg' 
+                            : 'https://servicios.campus.pe/' + listaProductoDetalles[0].imagengrande }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerra</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="agregarCarrito(listaProductoDetalles[0])">Agregar al carrito</button>
+            </div>
+        </div>
+    </div>
+</div>

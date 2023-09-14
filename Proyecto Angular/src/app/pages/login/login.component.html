@@ -1,0 +1,22 @@
+<section class="padded">
+    <div class="container">
+        <div class="ro">
+            <div class="col-med-4"></div>
+            <div class="col-med-4">
+                <h2>Iniciar Sesion</h2>
+                <form ngNativeValidate [formGroup]="loginForm" (ngSubmit)="iniciarSesion(loginForm.value)">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" required placeholder="Usuario" formControlName="usuario">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" required placeholder="Contrasena" formControlName="clave">
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary" type="submit">Iniciar Sesion</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-med-4"></div>
+        </div>
+    </div>
+</section>

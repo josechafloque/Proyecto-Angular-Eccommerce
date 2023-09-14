@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+        <a class="navbar-brand" [routerLink]="['/']">Ideas Digitales</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#nosotros">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#noticias">Noticias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#historia">Historia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/inversiones']">Inversiones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/proveedores']">Proveedores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/directores']">Directores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/empleados']">Empleados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/tienda']">Tienda</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/carrito']"><i class="bi bi-cart4"></i> Carrito</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/login']"><i class="bi bi-person-circle"></i> Iniciar Sesion</a>
+                </li>
+            </ul>    
+        </div>
+    </div>
+</nav>

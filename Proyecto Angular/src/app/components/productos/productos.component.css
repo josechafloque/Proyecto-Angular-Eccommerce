@@ -1,0 +1,6 @@
+.botonAgregarCarrito{
+    cursor: pointer;
+}
+.botonAgregarCarrito:hover{
+    color: var(--color2);
+}
